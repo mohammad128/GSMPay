@@ -16,6 +16,7 @@ class UserResource extends BaseResource
         return [
             'id' => $this->resource->id,
             'mobile' => $this->resource->mobile,
+            'avatar' => $this->resource->avatar,
         ];
     }
 }
