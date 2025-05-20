@@ -17,17 +17,16 @@ class LoginController extends Controller
             'mobile' => $request->input('mobile'),
         ])->first();
 
-
-        if(!$user || !Hash::check($request->input('password'),$user->password)){
+        if (! $user || ! Hash::check($request->input('password'), $user->password)) {
             return response()->json([
-                'message' => 'Invalid Credentials'
-            ],Response::HTTP_UNAUTHORIZED);
+                'message' => 'Invalid Credentials',
+            ], Response::HTTP_UNAUTHORIZED);
         }
 
         $token = $user->createToken("{$user->name}-token")->plainTextToken;
 
         return TokenResource::make([
-            "token" => $token,
+            'token' => $token,
         ]);
     }
 }

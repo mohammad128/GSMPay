@@ -10,6 +10,7 @@ class Post extends Model
 {
     /** @use HasFactory<\Database\Factories\PostFactory> */
     use HasFactory;
+
     protected $fillable = [
         'title',
         'content',
@@ -22,7 +23,7 @@ class Post extends Model
         return $this->belongsTo(
             related: User::class,
             foreignKey: 'user_id',
-            ownerKey:  'id'
+            ownerKey: 'id'
         );
     }
 }
