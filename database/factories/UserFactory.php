@@ -5,6 +5,7 @@ namespace Database\Factories;
 use GlassCode\PersianFaker\PersianFaker;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 /**
@@ -25,10 +26,14 @@ class UserFactory extends Factory
     public function definition(): array
     {
         $faker = PersianFaker::create();
+        $avatar = 'avatars/' . Str::uuid() . '.jpg';
+        $mobile = $faker->person()->phone();
+        Storage::disk('public')->put($avatar, file_get_contents("https://placehold.co/400/orange/white?text={$mobile}"));
 
         return [
-            'mobile' => $faker->person()->phone(),
+            'mobile' => $mobile,
             'password' => static::$password ??= Hash::make('password'),
+            'avatar' => $avatar,
             'remember_token' => Str::random(10),
         ];
     }
