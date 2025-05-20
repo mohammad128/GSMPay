@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use GlassCode\PersianFaker\PersianFaker;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -23,8 +24,10 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $faker = PersianFaker::create();
+
         return [
-            'mobile' => fake()->phoneNumber(),
+            'mobile' => $faker->person()->phone(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
         ];
