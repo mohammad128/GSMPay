@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\PostCollection;
 use App\Http\Resources\PostResource;
 use App\Repositories\Post\PostRepositoryInterface;
+use Illuminate\Support\Facades\Cache;
 
 class PostController extends Controller
 {
@@ -21,11 +22,18 @@ class PostController extends Controller
 
     public function show(int $id): PostResource
     {
-        return PostResource::make(
-            $this->postRepository->getPost(
-                postId: $id,
-                with: ['user:id,mobile,avatar']
-            )
+        $post = $this->postRepository->getPost(
+            postId: $id,
+            with: ['user:id,mobile,avatar']
         );
+
+        $ip = request()->ip();
+        $key = "post_viewed:{$post->id}:{$ip}";
+        if (!Cache::has($key)) {
+            $post->increment('views');
+            Cache::put($key, true);
+        }
+
+        return PostResource::make($post);
     }
 }
