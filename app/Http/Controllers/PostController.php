@@ -29,7 +29,7 @@ class PostController extends Controller
 
         $ip = request()->ip();
         $key = "post_viewed:{$post->id}:{$ip}";
-        if (!Cache::has($key)) {
+        if (! Cache::has($key)) {
             $post->increment('views');
             Cache::put($key, true);
         }
