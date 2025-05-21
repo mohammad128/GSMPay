@@ -30,7 +30,5 @@ RUN mkdir -p /home/$user/.composer && \
 
 # Set working directory
 WORKDIR /var/www/html
-RUN cd /var/www/html & composer i
-RUN cd /var/www/html & php artisan migrate:fresh --seed
-RUN cp /var/www/html/.env.example /var/www/html/.env & php artisan migrate:fresh --seed
+
 USER $user
