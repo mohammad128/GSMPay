@@ -3,7 +3,7 @@
 - Run ``docker-compose exec app co .env.example .env``
 - Run ``docker-compose exec app composer install``
 - Run ``docker-compose exec app php artisan key:generate``
-- Run ``docker-compose exec app php migrate:fresh --seed``
+- Run ``docker-compose exec app php artisan migrate:fresh --seed``
 
 #### Open [http://127.0.0.1:8080](http://127.0.0.1:8080)
 #### Phpmyadmin [http://127.0.0.1:8081](http://127.0.0.1:8081)
@@ -13,7 +13,8 @@
 - Run ``cp .env.example .env``
 - Then set environments in .env.
 - Run ``php artisan key:generate``
-- Run ``php migrate:fresh --seed``
+- Run ``php artisan migrate:fresh --seed``
+- Run ``php artisan serve``
 
 ## Postman
 - import ``GSMPay.postman_collection.json`` in the root project
