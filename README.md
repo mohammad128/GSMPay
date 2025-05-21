@@ -1,6 +1,6 @@
 ## Run With Docker
 - Run ``docker-compose up -d --build ``
-- Run ``docker-compose exec app co .env.example .env``
+- Run ``docker-compose exec app cp .env.example .env``
 - Run ``docker-compose exec app composer install``
 - Run ``docker-compose exec app php artisan key:generate``
 - Run ``docker-compose exec app php artisan migrate:fresh --seed``
@@ -16,6 +16,7 @@
 - Run ``php artisan migrate:fresh --seed``
 - Run ``php artisan serve``
 
-## Postman
-- import ``GSMPay.postman_collection.json`` in the root project
-- then try endpoints :)
+## Try Endpoints Using Postman
+- import [GSMPay.postman_collection.json](GSMPay.postman_collection.json) into postman.
+- import [GSMPay.postman_collection.json](GSMPay.postman_collection.json) in root project into postman.
+- Now then try endpoints :)
