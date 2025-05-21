@@ -26,7 +26,9 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::post('/avatar', AvatarController::class);
     });
 
-    Route::apiResource('post', PostController::class)
-        ->middleware('auth:sanctum')
-        ->only(['index', 'show']);
+    Route::group(['prefix' => 'post', 'as' => 'post.'], function () {
+        Route::get('/', [PostController::class, 'index'])->name(name: 'index');
+        Route::get('/top-users', [PostController::class, 'topUsers'])->name(name: 'topUsers');
+        Route::get('/{id}', [PostController::class, 'show'])->name(name: 'show');
+    });
 });

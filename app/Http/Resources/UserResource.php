@@ -17,6 +17,9 @@ class UserResource extends BaseResource
             'id' => $this->resource->id,
             'mobile' => $this->resource->mobile,
             'avatar' => $this->resource->avatar,
+            $this->mergeWhen(isset($this->resource->total_view), [
+                'total_view' => (int) $this->resource->total_view,
+            ]),
         ];
     }
 }

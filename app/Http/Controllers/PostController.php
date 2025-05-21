@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\PostCollection;
 use App\Http\Resources\PostResource;
+use App\Http\Resources\UserCollection;
 use App\Repositories\Post\PostRepositoryInterface;
+use App\Repositories\User\UserRepositoryInterface;
 use Illuminate\Support\Facades\Cache;
 
 class PostController extends Controller
@@ -15,7 +17,9 @@ class PostController extends Controller
     {
         return PostCollection::make(
             $this->postRepository->listPosts(
-                with: ['user']
+                with: ['user'],
+                page: request()->input('page', 1),
+                perPage: request()->input('perPage', 10),
             )
         );
     }
@@ -30,10 +34,15 @@ class PostController extends Controller
         $ip = request()->ip();
         $key = "post_viewed:{$post->id}:{$ip}";
         if (! Cache::has($key)) {
-            $post->increment('views');
-            Cache::put($key, true);
+            $post->increment(column: 'views');
+            Cache::put(key: $key, value: true);
         }
 
         return PostResource::make($post);
+    }
+
+    public function topUsers(UserRepositoryInterface $userRepository): UserCollection
+    {
+        return UserCollection::make($userRepository->topUsers());
     }
 }
