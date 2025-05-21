@@ -15,7 +15,7 @@ services:
         volumes:
             - ./:/var/www/html
         networks:
-            - laravel_network
+            - gsmpay_network
 
     webserver:
         image: nginx:alpine
@@ -28,7 +28,7 @@ services:
             - ./:/var/www/html
             - ./docker/nginx:/etc/nginx/conf.d
         networks:
-            - laravel_network
+            - gsmpay_network
         depends_on:
             - app
             - db
@@ -48,7 +48,7 @@ services:
         volumes:
             - dbdata:/var/lib/mysql
         networks:
-            - laravel_network
+            - gsmpay_network
 
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
@@ -61,7 +61,7 @@ services:
             PMA_HOST: db
             MYSQL_ROOT_PASSWORD: secret
         networks:
-            - laravel_network
+            - gsmpay_network
         depends_on:
             - db
 
@@ -70,5 +70,5 @@ volumes:
         driver: local
 
 networks:
-    laravel_network:
+    gsmpay_network:
         driver: bridge
