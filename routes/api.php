@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\User\AvatarController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,4 +25,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
         Route::post('/avatar', AvatarController::class);
     });
+
+    Route::apiResource('post', PostController::class)
+        ->middleware('auth:sanctum')
+        ->only(['index', 'show']);
 });
