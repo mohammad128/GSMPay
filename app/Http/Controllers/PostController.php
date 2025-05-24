@@ -5,16 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Resources\PostCollection;
 use App\Http\Resources\PostResource;
 use App\Http\Resources\UserCollection;
-use App\Http\Resources\UserResource;
-use App\Models\Post;
-use App\Models\User;
 use App\Repositories\Post\PostRepositoryInterface;
 use App\Repositories\User\UserRepositoryInterface;
 use Illuminate\Support\Facades\Cache;
 use Knuckles\Scribe\Attributes\Endpoint;
 use Knuckles\Scribe\Attributes\Group;
 use Knuckles\Scribe\Attributes\Header;
-use Knuckles\Scribe\Attributes\ResponseFromApiResource;
 use Knuckles\Scribe\Attributes\ResponseFromFile;
 
 #[Group(name: 'Post')]
