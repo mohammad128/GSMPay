@@ -6,7 +6,7 @@
 - Run ``docker-compose exec app php artisan migrate:fresh --seed``
 
 #### Open [http://127.0.0.1:8080](http://127.0.0.1:8080)
-#### Phpmyadmin [http://127.0.0.1:8081](http://127.0.0.1:8081)
+#### Phpmyadmin [http://127.0.0.1:8081](http://127.0.0.1:8081) (user: gsmpay, pass: gsmpay)
 
 ## Manual Install
 - Run``composer install``
@@ -20,3 +20,5 @@
 - import [GSMPay.postman_collection.json](GSMPay.postman_collection.json) into postman.
 - import [GSMPay.postman_collection.json](GSMPay.postman_collection.json) in root project into postman.
 - Now then try endpoints :)
+## Or Using [Swagger](http://127.0.0.1:8080/docs) UI
+- Open [http://127.0.0.1:8080/docs](http://127.0.0.1:8080/docs).

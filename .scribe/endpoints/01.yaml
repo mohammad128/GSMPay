@@ -1,0 +1,59 @@
+name: User
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/user/avatar
+    metadata:
+      groupName: User
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Change Avatar'
+      description: 'change user avatar.'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer xxx'
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      avatar:
+        name: avatar
+        description: 'The avatar image'
+        required: true
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters: []
+    fileParameters:
+      avatar: null
+    responses:
+      -
+        status: 200
+        content: |
+          {
+              "data": {
+                  "id": 11,
+                  "mobile": "09363680395",
+                  "avatar": "avatar/nkBTceSiZMFZo2rU3odZMNFYeSliexYGh1Ewj0U2.jpg"
+              },
+              "server_time": "2025-05-24T09:00:15.251545Z"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
